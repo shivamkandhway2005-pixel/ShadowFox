@@ -2,21 +2,21 @@
 
 ## Project Overview
 
-This project aims to predict housing prices in Boston using Machine Learning. A Random Forest Regressor is used to learn the relationship between various housing features such as crime rate, number of rooms, tax rate, and population characteristics, and then predict the median value of owner-occupied homes.
+This project predicts Boston house prices using Machine Learning. A Random Forest Regressor is trained on housing features such as crime rate, number of rooms, tax rate, and population characteristics to estimate house prices accurately.
 
 ---
 
 ## Problem Statement
 
-The objective of this project is to build a regression model capable of accurately predicting Boston house prices based on housing and neighborhood characteristics. The project involves data preprocessing, handling missing values, model training, evaluation, and feature importance analysis.
+Develop a regression model capable of predicting Boston house prices based on housing and neighborhood characteristics. The project includes data preprocessing, missing value handling, model training, evaluation, and feature importance analysis.
 
 ---
 
 ## Dataset Information
 
-The dataset contains information about housing in Boston suburbs.
+The Boston Housing dataset contains information about housing areas in Boston suburbs.
 
-### Features
+### Input Features
 
 * CRIM – Per capita crime rate by town
 * ZN – Proportion of residential land zoned for large lots
@@ -25,11 +25,11 @@ The dataset contains information about housing in Boston suburbs.
 * NOX – Nitric oxide concentration
 * RM – Average number of rooms per dwelling
 * AGE – Proportion of owner-occupied units built before 1940
-* DIS – Weighted distance to employment centers
+* DIS – Weighted distances to employment centers
 * RAD – Accessibility to radial highways
 * TAX – Property tax rate
 * PTRATIO – Pupil-teacher ratio
-* B – Proportion related to population demographics
+* B – Population demographic factor
 * LSTAT – Percentage of lower-status population
 
 ### Target Variable
@@ -43,18 +43,14 @@ The dataset contains information about housing in Boston suburbs.
 * Python
 * Pandas
 * NumPy
-* Scikit-Learn
 * Matplotlib
+* Scikit-Learn
 
 ---
 
-## Machine Learning Algorithm
+## Machine Learning Model
 
 ### Random Forest Regressor
-
-Random Forest is an ensemble learning algorithm that combines multiple decision trees to improve prediction accuracy and reduce overfitting.
-
-Model Parameters:
 
 ```python
 RandomForestRegressor(
@@ -64,27 +60,20 @@ RandomForestRegressor(
 )
 ```
 
+Random Forest combines multiple decision trees to improve prediction accuracy and reduce overfitting.
+
 ---
 
 ## Data Preprocessing
 
-1. Loaded the dataset using Pandas.
+1. Loaded dataset using Pandas.
 2. Checked for missing values.
-3. Replaced missing values using the median of each column.
-4. Split the dataset into training and testing sets (80:20).
+3. Replaced missing values using column medians.
+4. Split dataset into training and testing sets (80:20).
 
 ---
 
-## Model Evaluation Metrics
-
-The following metrics were used:
-
-* Mean Absolute Error (MAE)
-* Mean Squared Error (MSE)
-* Root Mean Squared Error (RMSE)
-* R² Score
-
-### Results
+## Model Performance
 
 | Metric   | Value |
 | -------- | ----- |
@@ -93,37 +82,49 @@ The following metrics were used:
 | RMSE     | 2.93  |
 | R² Score | 0.88  |
 
+### Performance Analysis
+
+* The model explains approximately 88% of the variance in house prices.
+* Low MAE and RMSE indicate accurate predictions.
+* Random Forest performed significantly better than Linear Regression on this dataset.
+
 ---
 
 ## Feature Importance
 
-The Random Forest model was used to determine the importance of each feature in predicting house prices.
+Top features influencing house prices:
 
-Important features typically include:
-
-* RM (Average Rooms)
-* LSTAT (Lower Status Population)
-* CRIM (Crime Rate)
-* PTRATIO (Pupil-Teacher Ratio)
+1. RM (Average Number of Rooms)
+2. LSTAT (Lower Status Population)
+3. DIS (Distance to Employment Centers)
+4. CRIM (Crime Rate)
 
 ---
 
-## Visualization
+## Visualizations
 
-The project includes a feature importance graph generated using Matplotlib to visualize the contribution of each feature.
+### Feature Importance
+
+Displays the contribution of each feature toward house price prediction.
+
+### Actual vs Predicted Prices
+
+Compares actual house prices with model predictions.
 
 ---
 
 ## Project Structure
 
 ```text
-Boston-House-Price-Prediction/
+Boston_House_Price_Prediction/
 │
+├── Boston_House_Price_Prediction.py
 ├── HousingData.csv
-├── Boston_House_Price_Prediction.ipynb
 ├── README.md
-├── requirements.txt
-└── output.png
+│
+└── images/
+    ├── feature_importance.png
+    └── actual_vs_predicted.png
 ```
 
 ---
@@ -133,31 +134,31 @@ Boston-House-Price-Prediction/
 1. Clone the repository
 
 ```bash
-git clone <repository-link>
+git clone <repository-url>
 ```
 
-2. Install dependencies
+2. Install required libraries
 
 ```bash
-pip install -r requirements.txt
+pip install pandas numpy matplotlib scikit-learn
 ```
 
-3. Run the notebook
+3. Run the Python file
 
 ```bash
-jupyter notebook
+python Boston_House_Price_Prediction.py
 ```
 
 ---
 
 ## Conclusion
 
-A Random Forest Regression model was successfully developed to predict Boston house prices. The model achieved an R² score of 0.88, indicating strong predictive performance. The results demonstrate that ensemble learning techniques such as Random Forest can effectively capture complex relationships in housing data and provide accurate price predictions.
+A Random Forest Regression model was successfully developed to predict Boston house prices. The model achieved an R² score of 0.88, demonstrating strong predictive performance. The analysis showed that the number of rooms and socioeconomic factors are the most influential variables affecting housing prices.
 
 ---
 
 ## Author
 
-Shivam Kumar
+**Shivam Kumar**
 
 ShadowFox Machine Learning Internship Project
