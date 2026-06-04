@@ -55,7 +55,8 @@ X_train, X_test, y_train, y_test = train_test_split(
     X,
     y,
     test_size=0.20,
-    random_state=42
+    random_state=42,
+    stratify=y
 )
 # Random Forest Model
 model = RandomForestClassifier(
@@ -63,6 +64,7 @@ model = RandomForestClassifier(
     max_depth=12,
     min_samples_split=5,
     min_samples_leaf=2,
+    class_weight="balanced",
     random_state=42
 )
 model.fit(X_train, y_train)
@@ -79,22 +81,22 @@ print(confusion_matrix(y_test, y_pred))
 print("\nClassification Report:")
 print(classification_report(y_test, y_pred))
 sample = pd.DataFrame({
-    "Gender": [1],                # Male
-    "Marital_Status": [1],        # Married
+    "Gender": [1],
+    "Marital_Status": [1],
     "Dependents": [1],
-    "Education": [0],             # Graduate
-    "Self_Employed": [0],         # No
+    "Education": [0],
+    "Self_Employed": [0],
     "Applicant_Income": [5000],
     "Coapplicant_Income": [2000],
     "Loan_Amount": [150],
     "Loan_Amount_Term": [360],
     "Credit_History": [1],
-    "Property_Area": [2],         # Urban
+    "Property_Area": [2],
     "Total_Income": [7000]
 })
-
+sample["Loan_Amount"] = np.log(sample["Loan_Amount"])
+sample["Total_Income"] = np.log(sample["Total_Income"])
 prediction = model.predict(sample)
-
 if prediction[0] == 1:
     print("\nLoan Approved")
 else:
